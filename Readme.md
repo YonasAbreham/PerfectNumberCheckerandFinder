@@ -12,4 +12,4 @@ The front end project provides UI to test for user supplied values. It invokes t
 
 ## How to Run
 - Open PerfectNumber.sln in the Backend directory by Visual Studio 2019 and run PerfectNumbers.API project.
-- Open the front end directory `WebUI` in commandline and run `npm start`
+- Open the front end directory `WebUI` in commandline  `npm install` and run `npm start`
