@@ -1,4 +1,4 @@
-# PerfectNumber Checker API
+# PerfectNumber Checker  and Finder API
 
 ## Description
 This project checks if a number is perfect number (as described in https://en.wikipedia.org/wiki/Perfect_number)
