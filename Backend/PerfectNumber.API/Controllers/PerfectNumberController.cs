@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,10 +22,16 @@ namespace PerfectNumber.API.Controllers
             _pnService = pnService;
         }
 
-        [HttpGet("check")]
-        public ActionResult<bool> Get(int number)
+        [HttpGet("checkWithFactors")]
+        public ActionResult<bool> Get(long number)
         {
             return Ok(_pnService.IsPerfectNumber(number));
+        }
+
+        [HttpGet("checkWithPrimeNumber")]// This works with all perfect numbers 2^(p−1)(2^p − 1 ) with odd prime p and, in fact, with all numbers of the form 2^(m−1)(2^m − 1) for odd integer (not necessarily prime) m.
+        public ActionResult<bool> GetByPerfectFormula(long number)
+        {
+            return Ok(_pnService.IsPerfectNumberByPrimes(number));
         }
 
         [HttpGet("find")]
