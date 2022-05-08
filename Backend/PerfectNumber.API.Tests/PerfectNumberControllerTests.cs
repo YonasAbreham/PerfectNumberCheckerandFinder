@@ -16,7 +16,7 @@ namespace PerfectNumber.API.Tests
         {
             // Arrange
             var mockPnService = new Mock<IPerfectNumberService>();
-            mockPnService.Setup(p => p.IsPerfectNumber(It.IsAny<int>())).Returns(false);
+            mockPnService.Setup(p => p.IsPerfectNumber(It.IsAny<long>())).Returns(false);
 
             var controller = new PerfectNumberController(mockPnService.Object);
 
@@ -32,7 +32,7 @@ namespace PerfectNumber.API.Tests
         {
             // Arrange
             var mockPnService = new Mock<IPerfectNumberService>();
-            mockPnService.Setup(p => p.IsPerfectNumber(It.IsAny<int>())).Returns(false);
+            mockPnService.Setup(p => p.IsPerfectNumber(It.IsAny<long>())).Returns(false);
 
             var controller = new PerfectNumberController(mockPnService.Object);
 

@@ -1,6 +1,7 @@
 using BusinessLogic.PerfectNumber;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Xunit;
 
 namespace BusinessLogic.Tests
@@ -17,6 +18,12 @@ namespace BusinessLogic.Tests
             numbers.ForEach(n =>
             {
                 var result = pnService.IsPerfectNumber(n);
+                Assert.True(result);
+            });
+
+            numbers.ForEach(n =>
+            {
+                var result = pnService.IsPerfectNumberByPrimes(n);
                 Assert.True(result);
             });
         }
@@ -50,6 +57,32 @@ namespace BusinessLogic.Tests
 
             result = pnService.FindPerfectNumbers(500, 700);
             Assert.Empty(result);
+        }
+
+        [Fact]
+        public void Performance_Tests()
+        {
+            int number = 33550336;
+            int loop = 100000;
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            for (int i = 0; i < loop; i++)
+            {
+                pnService.IsPerfectNumber(number);
+            }
+            sw.Stop();
+            var elapsed1 = sw.ElapsedMilliseconds;
+
+            sw.Start();
+            for (int i = 0; i < loop; i++)
+            {
+                ((IPerfectNumberService)pnService).IsPerfectNumberByPrimes(number);
+            }
+            sw.Stop();
+            var elapsed2 = sw.ElapsedMilliseconds;
+
         }
     }
 }

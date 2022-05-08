@@ -30,7 +30,8 @@ namespace PerfectNumber.IntegrationTests
         }
  
         [Theory]
-        [InlineData("/api/perfectnumber/check?number=5")]
+        [InlineData("/api/perfectnumber/checkWithFactors?number=5")]
+        [InlineData("/api/perfectnumber/checkWithPrimeNumber?number=7")]
         [InlineData("/api/perfectnumber/find?start=5&end=6")]
         public async Task Get_APIEndpointsReturnSuccess(string url)
         {
